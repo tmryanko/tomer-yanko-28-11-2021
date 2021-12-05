@@ -5,6 +5,8 @@ import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Typography from '@mui/material/Typography';
 import Snackbar from '@mui/material/Snackbar';
+import Collapse from '@mui/material/Collapse';
+
 import FavoriteCheckbox from '../../components/FavoriteCheckbox';
 import Autocomplete from '../../components/Autocomplete';
 import DailyForecasts from '../../components/DailyForecasts';
@@ -35,12 +37,21 @@ const Home = ({ darkTheme }) => {
     error,
   } = useSelector((state) => state.weather);
   const [checked, setChecked] = useState(false);
-
+  const [enterTitle, setEnterTitle] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
     if (error) setErrorAlert(true);
   }, [error]);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setEnterTitle(true);
+    }, 2000);
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [currentCity]);
 
   useEffect(() => {
     if (location.state) {
@@ -100,6 +111,11 @@ const Home = ({ darkTheme }) => {
     setErrorAlert(false);
   };
 
+  const isEnglishStr = (str) => {
+    var english = /^[A-Za-z0-9]*$/;
+    return english.test(str);
+  };
+
   return (
     <HomeContainer>
       <Snackbar
@@ -114,12 +130,13 @@ const Home = ({ darkTheme }) => {
         darkTheme={darkTheme}
         options={searchedList}
         handleChange={(newValue) => {
-          dispatch(setCurrentCity(newValue));
-          // setSearchedValue(newValue);
+          if (isEnglishStr(newValue)) dispatch(setCurrentCity(newValue));
+          else {
+            dispatch(setErrorMsg('only english'));
+          }
         }}
         handleInputChange={(newInputValue, e) => {
-          var english = /^[A-Za-z0-9]*$/;
-          if (english.test(newInputValue)) setInputValue(newInputValue);
+          if (isEnglishStr(newInputValue)) setInputValue(newInputValue);
           else {
             dispatch(setErrorMsg('only english'));
           }
@@ -148,7 +165,14 @@ const Home = ({ darkTheme }) => {
             )}
           </div>
         </HomeTopBody>
-        <Typography variant='h4'>{currentWeather[0]?.WeatherText}</Typography>
+        <div>
+          <Collapse orientation='vertocal' in={enterTitle}>
+            <Typography variant='h4'>
+              {currentWeather[0]?.WeatherText}
+            </Typography>
+          </Collapse>
+        </div>
+
         <DailyForecasts degreeType={degreeType} />
       </HomeBody>
     </HomeContainer>

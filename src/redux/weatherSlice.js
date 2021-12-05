@@ -93,8 +93,8 @@ export const weatherSlice = createSlice({
     },
     setCurrentCity: (state, action) => {
       state.currentCity = state.currentCity = {
-        Key: action.payload.Key,
-        CityName: action.payload.LocalizedName,
+        Key: action.payload?.Key,
+        CityName: action.payload?.LocalizedName,
       };
     },
     setErrorMsg: (state, action) => {

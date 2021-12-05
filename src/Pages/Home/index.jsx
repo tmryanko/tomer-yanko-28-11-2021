@@ -36,24 +36,15 @@ const Home = ({ darkTheme }) => {
     error,
   } = useSelector((state) => state.weather);
   const [checked, setChecked] = useState(false);
-  // const [searchedValue, setSearchedValue] = useState();
-  // {
-  // AdministrativeArea: { ID: 'TA', LocalizedName: 'Tel Aviv' },
-  // Country: { ID: 'IL', LocalizedName: 'Israel' },
-  // Key: '215854',
-  // LocalizedName: 'Tel Aviv',
-  // Rank: 31,
-  // Type: 'City',
-  // Version: 1,
-  // }
+
   const [inputValue, setInputValue] = useState('');
+
   useEffect(() => {
     if (error) setErrorAlert(true);
   }, [error]);
 
   useEffect(() => {
     if (location.state) {
-      console.log(location.state);
       dispatch(
         setCurrentCity({
           Key: location.state.Key,
@@ -71,8 +62,6 @@ const Home = ({ darkTheme }) => {
           }),
         );
       });
-    } else {
-      console.log('Not Available');
     }
   }, []);
 
@@ -85,18 +74,8 @@ const Home = ({ darkTheme }) => {
     };
   }, [inputValue]);
 
-  // useEffect(() => {
-  //   if (currentCity) {
-  //     const { Key } = currentCity;
-  //     console.log(currentCity);
-
-  //     dispatch(fetchWeatherByCityKey(Key));
-  //   }
-  // }, [currentCity]);
-
   useEffect(() => {
     if (currentCity?.Key && !location.state) {
-      console.log(currentCity);
       dispatch(fetchWeatherByCityKey(currentCity?.Key));
     }
   }, [currentCity]);

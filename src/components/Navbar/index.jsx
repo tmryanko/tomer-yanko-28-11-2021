@@ -22,9 +22,6 @@ const Navbar = ({ onClickIconColor }) => {
       dispatch(changeDegreeType('Metric'));
     }
   };
-  // const handleChangeTheme = () => {
-  //   console.log('object');
-  // };
 
   return (
     <AppBar position='static'>

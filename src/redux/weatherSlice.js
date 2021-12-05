@@ -40,47 +40,47 @@ const initialState = {
   searchedList: [],
   degreeType: 'Imperial',
   currentCity: {
-    // Key: '9999',
-    // CityName: 'tel aviv',
+    Key: '9999',
+    CityName: 'tel aviv',
   },
   dailyForecasts: [
-    // {
-    //   Date: '2021-12-01T07:00:00+02:00',
-    //   Temperature: {
-    //     Maximum: { Value: 71, Unit: 'F', UnitType: 18 },
-    //     Minimum: { Value: 65, Unit: 'F', UnitType: 18 },
-    //   },
-    // },
-    // {
-    //   Date: '2021-12-02T07:00:00+02:00',
-    //   Temperature: {
-    //     Maximum: { Value: 71, Unit: 'F', UnitType: 18 },
-    //     Minimum: { Value: 65, Unit: 'F', UnitType: 18 },
-    //   },
-    // },
-    // {
-    //   Date: '2021-12-03T07:00:00+02:00',
-    //   Temperature: {
-    //     Maximum: { Value: 71, Unit: 'F', UnitType: 18 },
-    //     Minimum: { Value: 65, Unit: 'F', UnitType: 18 },
-    //   },
-    // },
-    // {
-    //   Date: '2021-12-04T07:00:00+02:00',
-    //   Temperature: {
-    //     Maximum: { Value: 71, Unit: 'F', UnitType: 18 },
-    //     Minimum: { Value: 65, Unit: 'F', UnitType: 18 },
-    //   },
-    // },
+    {
+      Date: '2021-12-01T07:00:00+02:00',
+      Temperature: {
+        Maximum: { Value: 71, Unit: 'F', UnitType: 18 },
+        Minimum: { Value: 65, Unit: 'F', UnitType: 18 },
+      },
+    },
+    {
+      Date: '2021-12-02T07:00:00+02:00',
+      Temperature: {
+        Maximum: { Value: 71, Unit: 'F', UnitType: 18 },
+        Minimum: { Value: 65, Unit: 'F', UnitType: 18 },
+      },
+    },
+    {
+      Date: '2021-12-03T07:00:00+02:00',
+      Temperature: {
+        Maximum: { Value: 71, Unit: 'F', UnitType: 18 },
+        Minimum: { Value: 65, Unit: 'F', UnitType: 18 },
+      },
+    },
+    {
+      Date: '2021-12-04T07:00:00+02:00',
+      Temperature: {
+        Maximum: { Value: 71, Unit: 'F', UnitType: 18 },
+        Minimum: { Value: 65, Unit: 'F', UnitType: 18 },
+      },
+    },
   ],
   currentWeather: [
-    // {
-    //   Temperature: {
-    //     Imperial: { Value: 71, Unit: 'F', UnitType: 18 },
-    //     Metric: { Value: 21.9, Unit: 'C', UnitType: 17 },
-    //   },
-    //   WeatherText: 'Clouds and sun',
-    // },
+    {
+      Temperature: {
+        Imperial: { Value: 71, Unit: 'F', UnitType: 18 },
+        Metric: { Value: 21.9, Unit: 'C', UnitType: 17 },
+      },
+      WeatherText: 'Clouds and sun',
+    },
   ],
 };
 

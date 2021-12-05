@@ -3,14 +3,15 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import Typography from '@mui/material/Typography';
+import Snackbar from '@mui/material/Snackbar';
+import FavoriteCheckbox from '../../components/FavoriteCheckbox';
+import Autocomplete from '../../components/Autocomplete';
+import DailyForecasts from '../../components/DailyForecasts';
 import {
   addToFavorites,
   removeFromFavorites,
 } from '../../redux/favoritesSlice';
-import Typography from '@mui/material/Typography';
-import FavoriteCheckbox from '../../components/FavoriteCheckbox';
-import { HomeContainer, HomeBody } from './style';
-import Autocomplete from '../../components/Autocomplete';
 import {
   fetchSearchedList,
   fetchWeatherByCityKey,
@@ -18,9 +19,7 @@ import {
   fetchCurrentPosition,
   setCurrentCity,
 } from '../../redux/weatherSlice';
-import Snackbar from '@mui/material/Snackbar';
-
-import DailyForecasts from '../../components/DailyForecasts';
+import { HomeContainer, HomeBody, HomeTopBody } from './style';
 
 const Home = ({ darkTheme }) => {
   const dispatch = useDispatch();
@@ -75,12 +74,10 @@ const Home = ({ darkTheme }) => {
   }, [inputValue]);
 
   useEffect(() => {
+    console.log(currentCity);
     if (currentCity?.Key && !location.state) {
       dispatch(fetchWeatherByCityKey(currentCity?.Key));
     }
-  }, [currentCity]);
-
-  useEffect(() => {
     if (favoritesList[currentCity?.CityName]) setChecked(true);
     else setChecked(false);
   }, [currentCity]);
@@ -94,6 +91,7 @@ const Home = ({ darkTheme }) => {
     }
     setChecked(!checked);
   };
+
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -101,6 +99,7 @@ const Home = ({ darkTheme }) => {
     dispatch(setErrorMsg(''));
     setErrorAlert(false);
   };
+
   return (
     <HomeContainer>
       <Snackbar
@@ -128,13 +127,7 @@ const Home = ({ darkTheme }) => {
         id='home-Autocomplete'
       />
       <HomeBody>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-around',
-            flexWrap: 'wrap',
-          }}
-        >
+        <HomeTopBody>
           <div>
             <Typography sx={{ minWidth: 200 }}>
               {currentCity?.CityName}
@@ -154,7 +147,7 @@ const Home = ({ darkTheme }) => {
               />
             )}
           </div>
-        </div>
+        </HomeTopBody>
         <Typography variant='h4'>{currentWeather[0]?.WeatherText}</Typography>
         <DailyForecasts degreeType={degreeType} />
       </HomeBody>

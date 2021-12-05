@@ -14,3 +14,8 @@ export const HomeBody = styled.div`
   grid-gap: 20px;
   margin-top: 20px;
 `;
+export const HomeTopBody = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+`;

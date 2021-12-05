@@ -24,7 +24,7 @@ const Autocomplete = ({
       disablePortal
       id={id}
       loading={loading}
-      getOptionLabel={(option) => option?.LocalizedName}
+      getOptionLabel={(option) => option?.LocalizedName || ''}
       sx={{
         width: 300,
         background: darkTheme ? '#121212' : '#fff',

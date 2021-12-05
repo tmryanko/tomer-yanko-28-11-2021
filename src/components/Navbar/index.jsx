@@ -43,11 +43,10 @@ const Navbar = ({ onClickIconColor }) => {
               </IconButton>
             </Tooltip>
           </Box>
-          <Box sx={{ display: 'flex', gap: '10px' }}>
+          <Box sx={{ display: 'flex', gridGap: '10px' }}>
             <Link style={{ color: 'white', textDecoration: 'none' }} to='/'>
               Home
             </Link>
-
             <Link
               style={{ color: 'white', textDecoration: 'none' }}
               to='/favorites'

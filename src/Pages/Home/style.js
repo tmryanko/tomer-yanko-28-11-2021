@@ -12,4 +12,5 @@ export const HomeBody = styled.div`
   flex-direction: column;
   width: 100%;
   grid-gap: 20px;
+  margin-top: 20px;
 `;

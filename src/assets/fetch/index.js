@@ -1,4 +1,4 @@
-export const ApiCall = async (link) => {
+export const ApiCall = async (link, body) => {
   const WEATHER_LINK = 'http://dataservice.accuweather.com';
   const res = await fetch(`${WEATHER_LINK}${link}`);
   const json = await res.json();

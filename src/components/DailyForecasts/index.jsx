@@ -1,18 +1,23 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Typography from '@mui/material/Typography';
 
 import Card from '../Card';
-
 import { ConvertNumToDay } from '../../assets/ConvertNumToDay';
+import { DailyForecastsCont } from './style';
 
 const DailyForecasts = ({ degreeType }) => {
   const { dailyForecasts } = useSelector((state) => state.weather);
 
-  return (
-    <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
+  return dailyForecasts.length === 0 ? (
+    <Typography>Empty List</Typography>
+  ) : (
+    <DailyForecastsCont
+      style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}
+    >
       {dailyForecasts &&
         dailyForecasts.length &&
-        dailyForecasts?.map((day) => {
+        dailyForecasts?.map((day, index) => {
           const { Date: currentDate, Temperature } = day;
           return (
             <Card
@@ -20,10 +25,11 @@ const DailyForecasts = ({ degreeType }) => {
               day={ConvertNumToDay(currentDate)}
               degrees={Temperature?.Minimum.Value}
               degreeType={degreeType}
+              unit={degreeType === 'Imperial' ? 'F' : 'C'}
             />
           );
         })}
-    </div>
+    </DailyForecastsCont>
   );
 };
 

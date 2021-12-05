@@ -10,10 +10,10 @@ export const favoritesSlice = createSlice({
   reducers: {
     addToFavorites: (state, action) => {
       const { payload } = action;
-      const { LocalizedName, currentWeather } = payload;
+      const { CityName, currentWeather, Key } = payload;
       state.favoritesList = {
         ...state.favoritesList,
-        [LocalizedName]: currentWeather,
+        [CityName]: { Key, currentWeather },
       };
     },
     removeFromFavorites: (state, action) => {

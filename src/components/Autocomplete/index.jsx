@@ -2,8 +2,14 @@ import React from 'react';
 import MuiAutocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 
-const Autocomplete = ({ id, options, handleChange, handleInputChange }) => {
-  const loading = options.length === 0;
+const Autocomplete = ({
+  id,
+  options,
+  handleChange,
+  handleInputChange,
+  darkTheme,
+}) => {
+  const loading = options?.length === 0;
 
   return (
     <MuiAutocomplete
@@ -18,9 +24,17 @@ const Autocomplete = ({ id, options, handleChange, handleInputChange }) => {
       disablePortal
       id={id}
       loading={loading}
-      getOptionLabel={(option) => option?.LocalizedName || ''}
+      getOptionLabel={(option) => option?.LocalizedName}
       sx={{
         width: 300,
+        background: darkTheme ? '#121212' : '#fff',
+      }}
+      renderOption={(props, option) => {
+        return (
+          <li {...props} key={option?.Key}>
+            {option?.LocalizedName}
+          </li>
+        );
       }}
       renderInput={(params) => {
         return <TextField {...params} label='Pick City' />;

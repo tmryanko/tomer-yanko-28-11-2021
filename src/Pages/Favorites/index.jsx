@@ -23,6 +23,7 @@ const Favorites = () => {
       <Typography variant='h3'>Favorite Cities</Typography>
       <ListContainer>
         {Object.entries(favoritesList).map((fav) => {
+          console.log(fav[1].currentWeather[0]);
           const date = new Date(
             fav[1].currentWeather[0]?.LocalObservationDateTime,
           ).toLocaleDateString();

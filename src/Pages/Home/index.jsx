@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import Typography from '@mui/material/Typography';
 import Snackbar from '@mui/material/Snackbar';
 import Collapse from '@mui/material/Collapse';
-
 import FavoriteCheckbox from '../../components/FavoriteCheckbox';
 import Autocomplete from '../../components/Autocomplete';
 import DailyForecasts from '../../components/DailyForecasts';

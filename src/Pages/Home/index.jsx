@@ -85,7 +85,6 @@ const Home = ({ darkTheme }) => {
   }, [inputValue]);
 
   useEffect(() => {
-    console.log(currentCity);
     if (currentCity?.Key && !location.state) {
       dispatch(fetchWeatherByCityKey(currentCity?.Key));
     }
@@ -112,7 +111,7 @@ const Home = ({ darkTheme }) => {
   };
 
   const isEnglishStr = (str) => {
-    var english = /^[A-Za-z0-9]*$/;
+    var english = /^[A-Za-z0-9 ]*$/;
     return english.test(str);
   };
 
@@ -135,7 +134,7 @@ const Home = ({ darkTheme }) => {
             dispatch(setErrorMsg('only english'));
           }
         }}
-        handleInputChange={(newInputValue, e) => {
+        handleInputChange={(event, newInputValue) => {
           if (isEnglishStr(newInputValue)) setInputValue(newInputValue);
           else {
             dispatch(setErrorMsg('only english'));
@@ -166,7 +165,7 @@ const Home = ({ darkTheme }) => {
           </div>
         </HomeTopBody>
         <div>
-          <Collapse orientation='vertocal' in={enterTitle}>
+          <Collapse orientation='vertical' in={enterTitle}>
             <Typography variant='h4'>
               {currentWeather[0]?.WeatherText}
             </Typography>

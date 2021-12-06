@@ -23,11 +23,15 @@ const Favorites = () => {
       <Typography variant='h3'>Favorite Cities</Typography>
       <ListContainer>
         {Object.entries(favoritesList).map((fav) => {
+          const date = new Date(
+            fav[1].currentWeather[0]?.LocalObservationDateTime,
+          ).toLocaleDateString();
           return (
             <Card
               onClick={() => handleCardClick(fav[1].Key, fav[0])}
               key={`fav: ${fav[0]}`}
-              day={fav[0]}
+              cardHeaderTitle={fav[0]}
+              cardHeaderSubTitle={date}
               degrees={fav[1].currentWeather[0]?.Temperature.Imperial.Value}
               unit={fav[1].currentWeather[0]?.Temperature?.[degreeType].Unit}
               degreeType={degreeType}

@@ -19,10 +19,12 @@ const DailyForecasts = ({ degreeType }) => {
         dailyForecasts.length &&
         dailyForecasts?.map((day, index) => {
           const { Date: currentDate, Temperature } = day;
+          const date = new Date(currentDate).toLocaleDateString();
           return (
             <Card
               key={currentDate}
-              day={ConvertNumToDay(currentDate)}
+              cardHeaderTitle={ConvertNumToDay(currentDate)}
+              cardHeaderSubTitle={date}
               degrees={Temperature?.Minimum.Value}
               degreeType={degreeType}
               unit={degreeType === 'Imperial' ? 'F' : 'C'}

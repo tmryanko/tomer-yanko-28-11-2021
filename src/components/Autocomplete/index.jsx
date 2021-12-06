@@ -18,7 +18,7 @@ const Autocomplete = ({
         handleChange(newValue);
       }}
       onInputChange={(event, newInputValue) => {
-        handleInputChange(newInputValue);
+        handleInputChange(event, newInputValue);
       }}
       freeSolo
       disablePortal

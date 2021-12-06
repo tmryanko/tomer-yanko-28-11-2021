@@ -43,7 +43,7 @@ const Card = ({
           subheader={cardHeaderSubTitle}
         />
         <Stack direction='row' spacing={1} justifyContent='center'>
-          <Typography>Temperture:</Typography>
+          <Typography>Temperature:</Typography>
           <Typography>{currentDegree}</Typography>
           {unit && <Typography>{unit}</Typography>}
         </Stack>
